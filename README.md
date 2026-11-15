@@ -1,4 +1,5 @@
 # ForgeFit
+<<<<<<< HEAD
 
 ForgeFit is a React/Vite fitness app with an Express, MongoDB, and cookie-authenticated API.
 
@@ -26,3 +27,6 @@ Deploy the `backend` and `frontend` as separate services. Configure the variable
 - AI replies use a personalized built-in coach by default. To enable model-generated replies, configure `OPENAI_API_KEY` and optionally `OPENAI_MODEL` / `OPENAI_BASE_URL` on the backend only.
 
 The API exposes `/health` for a basic liveness check. This project has no deployment provider or production domains configured in source; supply those values in the hosting environment before release.
+=======
+ForgeFit is a fitness management web application designed to help users organize workout routines, track fitness activities, and achieve their health goals. It combines a user-friendly interface with modern web technologies to make fitness planning more accessible, structured, and effective.
+>>>>>>> fc4d845cca14eb603f8ef835b2697e1201e2fc1e
