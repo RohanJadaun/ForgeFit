@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+html[data-theme="dark"] body {
+  color: #e2e8f0;
+  background: #0b1220;
+}
+
+html[data-theme="dark"] .bg-gradient-to-br.from-slate-50,
+html[data-theme="dark"] .from-slate-50 {
+  background-image: linear-gradient(to bottom right, #0b1220, #111827 55%, #0f172a);
+}
+
+html[data-theme="dark"] .from-blue-50.to-white {
+  background-image: linear-gradient(to right, #172554, #111827);
+}
+
+html[data-theme="dark"] .bg-white { background-color: #111c2d; }
+html[data-theme="dark"] .bg-slate-50,
+html[data-theme="dark"] .bg-slate-50\/50 { background-color: #162235; }
+html[data-theme="dark"] .bg-slate-100 { background-color: #1e293b; }
+html[data-theme="dark"] .bg-slate-200 { background-color: #334155; }
+html[data-theme="dark"] .text-slate-900 { color: #f1f5f9; }
+html[data-theme="dark"] .text-slate-800 { color: #e2e8f0; }
+html[data-theme="dark"] .text-slate-700 { color: #cbd5e1; }
+html[data-theme="dark"] .text-slate-600 { color: #b6c2d2; }
+html[data-theme="dark"] .text-slate-500 { color: #94a3b8; }
+html[data-theme="dark"] .text-slate-400 { color: #94a3b8; }
+html[data-theme="dark"] .border-slate-100 { border-color: #263449; }
+html[data-theme="dark"] .border-slate-200 { border-color: #334155; }
+html[data-theme="dark"] .divide-slate-100 > :not(:last-child) { border-color: #263449; }
+html[data-theme="dark"] input,
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea { color: #e2e8f0; background-color: #111c2d; border-color: #334155; }
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder { color: #8290a3; }
+html[data-theme="dark"] option { color: #e2e8f0; background-color: #111c2d; }
+html[data-theme="dark"] .hover\:bg-slate-50:hover { background-color: #1e293b; }
+html[data-theme="dark"] .hover\:bg-slate-100:hover { background-color: #263449; }
+html[data-theme="dark"] .shadow-sm,
+html[data-theme="dark"] .shadow-xl { --tw-shadow-color: #02061780; }
+html[data-theme="dark"] .bg-gradient-to-br.from-slate-50 { background-color: #0b1220; }
+html[data-theme="dark"] .pointer-events-none.opacity-\[0\.4\] { opacity: 0.08; }
