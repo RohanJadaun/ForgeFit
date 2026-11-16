@@ -1,10 +1,15 @@
 import { useEffect, useMemo, useState } from "react";
-import { Bell, CalendarDays, ChevronDown, Moon, Sun } from "lucide-react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Bell, CalendarDays, ChevronDown, LogOut, Moon, Sun } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../store/slices/authSlice";
 
 function Navbar() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [date, setDate] = useState(() => new Date());
+  const [loggingOut, setLoggingOut] = useState(false);
+  const [logoutError, setLogoutError] = useState("");
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [showActivity, setShowActivity] = useState(() => window.localStorage.getItem("forgefit_show_activity") !== "false");
   const [darkMode, setDarkMode] = useState(() => window.localStorage.getItem("forgefit_theme") === "dark");
@@ -40,12 +45,26 @@ function Navbar() {
     year: "numeric",
   }).format(date);
 
+  const handleLogout = async () => {
+    setLoggingOut(true);
+    setLogoutError("");
+    try {
+      await dispatch(logout()).unwrap();
+      navigate("/login", { replace: true });
+    } catch {
+      setLogoutError("Could not log out. Please try again.");
+    } finally {
+      setLoggingOut(false);
+    }
+  };
+
   return (
     <header className="mb-8 flex items-center justify-between gap-4">
       <div>
         <p className="text-sm font-medium text-slate-500">
           Welcome back, {user?.fullName?.split(" ")[0] || "there"}
         </p>
+        {logoutError && <p className="mt-1 text-xs text-red-600" role="alert">{logoutError}</p>}
       </div>
 
       <div className="flex items-center gap-3 sm:gap-4">
@@ -93,6 +112,16 @@ function Navbar() {
           </div>
           <ChevronDown size={16} className="hidden text-slate-500 sm:block" />
         </Link>
+        <button
+          type="button"
+          onClick={handleLogout}
+          disabled={loggingOut}
+          className="flex h-11 items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 text-sm font-medium text-slate-700 shadow-sm transition hover:border-red-200 hover:bg-red-50 hover:text-red-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:cursor-wait disabled:opacity-60"
+          aria-label="Log out"
+        >
+          <LogOut size={17} />
+          <span className="hidden sm:inline">{loggingOut ? "Logging out…" : "Log out"}</span>
+        </button>
       </div>
     </header>
   );
