@@ -20,7 +20,8 @@ function Sidebar() {
   ];
 
   return (
-    <aside className="w-64 p-4 sticky top-6 self-start">
+    <>
+    <aside className="sticky top-6 hidden w-64 shrink-0 self-start p-4 md:block">
       <div
         className="
         bg-white
@@ -150,6 +151,23 @@ function Sidebar() {
         </div>
       </div>
     </aside>
+    <nav aria-label="Main navigation" className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-6 border-t border-slate-200 bg-white/95 px-1 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] shadow-[0_-8px_24px_rgba(15,23,42,0.08)] backdrop-blur md:hidden">
+      {links.map((item) => {
+        const Icon = item.icon;
+        return (
+          <NavLink
+            key={item.path}
+            to={item.path}
+            aria-label={item.name}
+            className={({ isActive }) => `flex min-w-0 flex-col items-center justify-center gap-1 rounded-lg py-1 text-[10px] font-medium leading-tight transition ${isActive ? "text-blue-600" : "text-slate-500"}`}
+          >
+            <Icon size={19} aria-hidden="true" />
+            <span className="truncate">{item.name}</span>
+          </NavLink>
+        );
+      })}
+    </nav>
+    </>
   );
 }
 

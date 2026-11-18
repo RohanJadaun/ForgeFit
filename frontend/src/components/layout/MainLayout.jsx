@@ -11,7 +11,13 @@ function MainLayout({ children }) {
   from-slate-50
   via-blue-50/30
   to-slate-100
-  p-6
+  px-3
+  pt-3
+  pb-24
+  sm:px-5
+  sm:pt-5
+  md:pb-5
+  lg:p-6
 ">
   <div className="fixed inset-0 pointer-events-none opacity-[0.4]">
   <div className="absolute top-[-200px] left-[-200px] w-[600px] h-[600px] bg-blue-200 rounded-full blur-[120px]" />
@@ -22,13 +28,16 @@ function MainLayout({ children }) {
         max-w-[1750px]
         mx-auto
         flex
+        flex-col
+        md:flex-row
         items-start
-        gap-6
+        gap-4
+        md:gap-6
         "
       >
         <Sidebar />
 
-        <main className="flex-1 min-w-0">
+        <main className="w-full min-w-0 flex-1 md:w-auto">
           <Navbar />
 
           <div className="mt-4">

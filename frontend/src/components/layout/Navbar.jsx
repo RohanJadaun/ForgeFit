@@ -59,21 +59,24 @@ function Navbar() {
   };
 
   return (
-    <header className="mb-8 flex items-center justify-between gap-4">
-      <div>
-        <p className="text-sm font-medium text-slate-500">
+    <header className="mb-5 flex flex-wrap items-center justify-between gap-3 sm:mb-8 sm:gap-4">
+      <div className="min-w-0 flex-1">
+        <p className="truncate text-sm font-medium text-slate-500">
           Welcome back, {user?.fullName?.split(" ")[0] || "there"}
         </p>
         {logoutError && <p className="mt-1 text-xs text-red-600" role="alert">{logoutError}</p>}
       </div>
 
-      <div className="flex items-center gap-3 sm:gap-4">
+      <div className="ml-auto flex w-full flex-wrap items-center justify-end gap-2 sm:w-auto sm:gap-3">
         <button type="button" onClick={() => setDarkMode((current) => !current)} aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"} aria-pressed={darkMode} className="flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500">
           {darkMode ? <Sun size={19} className="text-amber-500" /> : <Moon size={19} className="text-slate-600" />}
         </button>
         <div className="flex h-11 items-center gap-2 rounded-2xl border border-slate-200 bg-white px-3 shadow-sm sm:px-4" aria-label={`Today is ${dateLabel}`}>
           <CalendarDays size={18} className="shrink-0 text-slate-500" />
-          <time className="whitespace-nowrap text-xs text-slate-600 sm:text-sm" dateTime={date.toISOString()}>{dateLabel}</time>
+          <time className="whitespace-nowrap text-xs text-slate-600 sm:text-sm" dateTime={date.toISOString()}>
+            <span className="sm:hidden">{date.toLocaleDateString(undefined, { month: "short", day: "numeric" })}</span>
+            <span className="hidden sm:inline">{dateLabel}</span>
+          </time>
         </div>
 
         {showActivity && <div className="relative">
